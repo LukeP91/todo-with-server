@@ -1,4 +1,4 @@
-import { remove, todosActionCreators, types, toggle } from './todosActionCreators'
+import { remove, add, types, toggle } from './todosActionCreators'
 
 describe('actionCreators', () => {
   it('creates add action', () => {
@@ -7,7 +7,7 @@ describe('actionCreators', () => {
       payload: 'todo',
     }
 
-    expect(todosActionCreators.add('todo')).toEqual(expectedAction)
+    expect(add('todo')).toEqual(expectedAction)
   })
 
   it('creates remove action', () => {

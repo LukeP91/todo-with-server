@@ -1,21 +1,27 @@
 import { types } from '../action_creators/todosActionCreators'
 
 const initialState = {
-  todos: [
-    { description: 'Create db for json server', completed: true, id: 1 },
-    { description: 'Create local store version of the app', completed: false, id: 2 },
-    { description: 'Fetch data from json server', completed: false, id: 3 },
-  ],
+  todos: [],
 }
 
 export const reducer = (state = initialState, action) => {
   const { todos } = state
   const { type, payload } = action
+
   switch (type) {
+    case types.FETCH_TODOS_REQUEST: {
+      return state
+    }
+    case types.FETCH_TODOS_SUCCESS: {
+      return {
+        ...state,
+        todos: payload,
+      }
+    }
     case types.ADD: {
       return {
         ...state,
-        todos: [{ description: payload, completed: false, id: todos.length + 1 }, ...todos],
+        todos: [...todos, { description: payload, completed: false, id: todos.length + 1 }],
       }
     }
     case types.REMOVE: {

@@ -1,8 +1,14 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Todo from './Todo'
+import { fetchTodos } from '../action_creators/todosActionCreators'
+import { connect } from 'react-redux'
 
-export default class List extends Component {
+class List extends Component {
+  componentDidMount() {
+    this.props.fetchTodos('http://localhost:3001/todos', { method: 'GET' })
+  }
+
   render() {
     const { todos } = this.props
 
@@ -10,6 +16,20 @@ export default class List extends Component {
   }
 }
 
-List.propTypes = {
-  todos: PropTypes.Array,
+const mapStateToProps = state => ({
+  todos: state.todos,
+})
+
+const mapDispatchToProps = {
+  fetchTodos,
 }
+
+List.propTypes = {
+  todos: PropTypes.array,
+  fetchTodos: PropTypes.func,
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(List)

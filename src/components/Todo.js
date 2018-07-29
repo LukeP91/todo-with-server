@@ -17,15 +17,13 @@ const mapDispatchToProps = {
   toggle,
 }
 
-Todo = connect(
+export default connect(
   null,
   mapDispatchToProps,
 )(Todo)
 
-export default Todo
-
 Todo.propTypes = {
   remove: PropTypes.func,
-  todo: PropTypes.Object,
+  todo: PropTypes.object,
   toggle: PropTypes.func,
 }
