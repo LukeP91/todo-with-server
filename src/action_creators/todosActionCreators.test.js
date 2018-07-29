@@ -1,4 +1,5 @@
-import { todosActionCreators, types } from './todosActionCreators'
+import { todosActionCreators, types, toggle } from './todosActionCreators'
+
 
 describe('actionCreators', () => {
   it('creates add action', () => {
@@ -25,6 +26,6 @@ describe('actionCreators', () => {
       payload: 1,
     }
 
-    expect(todosActionCreators.toggle(1)).toEqual(expectedAction)
+    expect(toggle(1)).toEqual(expectedAction)
   })
 })

@@ -4,12 +4,11 @@ import Todo from './Todo'
 
 export default class List extends Component {
   renderTodoItem = (todo, i) => {
-    const { toggleTodo } = this.props
     const { removeTodo } = this.props
 
     return (
       <div>
-        <Todo key={i} todo={todo} toggleTodo={toggleTodo} />
+        <Todo key={i} todo={todo} />
         <button onClick={() => removeTodo(todo.id)}>X</button>
       </div>
     )
@@ -24,5 +23,4 @@ export default class List extends Component {
 List.propTypes = {
   todos: PropTypes.Array,
   removeTodo: PropTypes.func,
-  toggleTodo: PropTypes.func,
 }
