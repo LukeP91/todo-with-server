@@ -59,14 +59,14 @@ describe('reducer', () => {
     })
   })
 
-  test('handle COMPLETE', () => {
+  test('handle TOGGLE', () => {
     expect(
       reducer(
         {
           todos: [{ description: 'todo', completed: true }],
         },
         {
-          type: types.COMPLETE,
+          type: types.TOGGLE,
           payload: 0,
         },
       ),
@@ -81,7 +81,7 @@ describe('reducer', () => {
         todos: [{ description: 'todo', completed: false }],
       },
       {
-        type: types.COMPLETE,
+        type: types.TOGGLE,
         payload: 0,
       },
     ),

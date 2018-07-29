@@ -16,6 +16,12 @@ class App extends Component {
     dispatch(todosActionCreators.add(text))
   }
 
+  toggleTodo = i => {
+    const { dispatch } = this.props
+
+    dispatch(todosActionCreators.toggle(i))
+  }
+
   render() {
     const { todos } = this.props
 
@@ -23,7 +29,7 @@ class App extends Component {
       <div className="App">
         <Title title="Todo App" />
         <Input onSubmitEditing={this.onAddTodo} placeholder={'Type a todo, than hit enter!'} />
-        <List todos={todos} />
+        <List todos={todos} toggleTodo={this.toggleTodo} />
       </div>
     )
   }
