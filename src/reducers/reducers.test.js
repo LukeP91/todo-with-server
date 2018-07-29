@@ -5,9 +5,9 @@ describe('reducer', () => {
   test('returns initial state', () => {
     expect(reducer(undefined, {})).toEqual({
       todos: [
-        { description: 'Create db for json server', completed: true },
-        { description: 'Create local store version of the app', completed: false },
-        { description: 'Fetch data from json server', completed: false },
+        { description: 'Create db for json server', completed: true, id: 1 },
+        { description: 'Create local store version of the app', completed: false, id: 2 },
+        { description: 'Fetch data from json server', completed: false, id: 3 },
       ],
     })
   })
@@ -22,13 +22,13 @@ describe('reducer', () => {
         },
       ),
     ).toEqual({
-      todos: [{ description: 'new todo', completed: false }],
+      todos: [{ description: 'new todo', completed: false, id: 1 }],
     })
 
     expect(
       reducer(
         {
-          todos: [{ description: 'old todo', completed: true }],
+          todos: [{ description: 'old todo', completed: true, id: 1 }],
         },
         {
           type: types.ADD,
@@ -37,8 +37,8 @@ describe('reducer', () => {
       ),
     ).toEqual({
       todos: [
-        { description: 'new todo', completed: false },
-        { description: 'old todo', completed: true },
+        { description: 'new todo', completed: false, id: 2 },
+        { description: 'old todo', completed: true, id: 1 },
       ],
     })
   })
@@ -47,11 +47,11 @@ describe('reducer', () => {
     expect(
       reducer(
         {
-          todos: [{ description: 'todo', completed: true }],
+          todos: [{ description: 'todo', completed: true, id: 1 }],
         },
         {
           type: types.REMOVE,
-          payload: 0,
+          payload: 1,
         },
       ),
     ).toEqual({
@@ -63,29 +63,29 @@ describe('reducer', () => {
     expect(
       reducer(
         {
-          todos: [{ description: 'todo', completed: true }],
+          todos: [{ description: 'todo', completed: true, id: 1 }],
         },
         {
           type: types.TOGGLE,
-          payload: 0,
+          payload: 1,
         },
       ),
     ).toEqual({
-      todos: [{ description: 'todo', completed: false }],
+      todos: [{ description: 'todo', completed: false, id: 1 }],
     })
   })
 
   expect(
     reducer(
       {
-        todos: [{ description: 'todo', completed: false }],
+        todos: [{ description: 'todo', completed: false, id: 1 }],
       },
       {
         type: types.TOGGLE,
-        payload: 0,
+        payload: 1,
       },
     ),
   ).toEqual({
-    todos: [{ description: 'todo', completed: true }],
+    todos: [{ description: 'todo', completed: true, id: 1 }],
   })
 })

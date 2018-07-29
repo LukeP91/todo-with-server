@@ -5,8 +5,14 @@ import Todo from './Todo'
 export default class List extends Component {
   renderTodoItem = (todo, i) => {
     const { toggleTodo } = this.props
+    const { removeTodo } = this.props
 
-    return <Todo index={i} key={i} todo={todo} toggleTodo={toggleTodo} />
+    return (
+      <div>
+        <Todo key={i} todo={todo} toggleTodo={toggleTodo} />
+        <button onClick={() => removeTodo(todo.id)}>X</button>
+      </div>
+    )
   }
   render() {
     const { todos } = this.props
@@ -17,5 +23,6 @@ export default class List extends Component {
 
 List.propTypes = {
   todos: PropTypes.Array,
+  removeTodo: PropTypes.func,
   toggleTodo: PropTypes.func,
 }
