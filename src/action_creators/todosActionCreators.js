@@ -8,11 +8,12 @@ export const todosActionCreators = {
   add: text => {
     return { type: types.ADD, payload: text }
   },
-  remove: index => {
-    return { type: types.REMOVE, payload: index }
-  },
 }
 
 export const toggle = index => {
   return { type: types.TOGGLE, payload: index }
+}
+
+export const remove = index => {
+  return { type: types.REMOVE, payload: index }
 }
