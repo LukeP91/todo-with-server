@@ -1,15 +1,6 @@
-import { remove, add, types, toggle } from './todosActionCreators'
+import { remove, types, toggle } from './todosActionCreators'
 
 describe('actionCreators', () => {
-  it('creates add action', () => {
-    const expectedAction = {
-      type: types.ADD,
-      payload: 'todo',
-    }
-
-    expect(add('todo')).toEqual(expectedAction)
-  })
-
   it('creates remove action', () => {
     const expectedAction = {
       type: types.REMOVE,

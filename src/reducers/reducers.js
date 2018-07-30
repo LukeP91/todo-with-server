@@ -18,10 +18,13 @@ export const reducer = (state = initialState, action) => {
         todos: payload,
       }
     }
-    case types.ADD: {
+    case types.ADD_TODO_REQUEST: {
+      return state
+    }
+    case types.ADD_TODO_SUCCESS: {
       return {
         ...state,
-        todos: [...todos, { description: payload, completed: false, id: todos.length + 1 }],
+        todos: [...todos, payload],
       }
     }
     case types.REMOVE: {

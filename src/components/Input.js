@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { add } from '../action_creators/todosActionCreators'
+import { addTodo } from '../action_creators/todosActionCreators'
 
 class Input extends Component {
   state = {
@@ -15,12 +15,19 @@ class Input extends Component {
   handleKeyPress = e => {
     if (e.key !== 'Enter') return
 
-    const { add } = this.props
+    const { addTodo } = this.props
     const { value } = this.state
 
     if (!value) return
 
-    add(value)
+    addTodo('http://localhost:3001/todos', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ description: value, completed: false }),
+    })
     this.setState({ value: '' })
   }
 
@@ -41,7 +48,7 @@ class Input extends Component {
 }
 
 const mapDispatchToProps = {
-  add,
+  addTodo,
 }
 
 export default connect(
@@ -51,5 +58,5 @@ export default connect(
 
 Input.propTypes = {
   placeholder: PropTypes.string,
-  add: PropTypes.func,
+  addTodo: PropTypes.func,
 }
