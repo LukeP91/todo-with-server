@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { toggle, removeTodo } from '../action_creators/todosActionCreators'
+import { toggleTodo, removeTodo } from '../action_creators/todosActionCreators'
 
 class Todo extends Component {
   description = () => {
@@ -15,11 +15,24 @@ class Todo extends Component {
   }
 
   render() {
-    const { toggle, removeTodo, todo } = this.props
+    const { toggleTodo, removeTodo, todo } = this.props
 
     return (
       <div>
-        <div onClick={() => toggle(todo.id)}>{this.description()}</div>
+        <div
+          onClick={() => {
+            toggleTodo(`http://localhost:3001/todos/${todo.id}`, {
+              method: 'PATCH',
+              headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({ completed: !todo.completed }),
+            })
+          }}
+        >
+          {this.description()}
+        </div>
         <button
           onClick={() => {
             removeTodo(`http://localhost:3001/todos/${todo.id}`, {
@@ -40,7 +53,7 @@ class Todo extends Component {
 
 const mapDispatchToProps = {
   removeTodo,
-  toggle,
+  toggleTodo,
 }
 
 export default connect(
@@ -51,5 +64,5 @@ export default connect(
 Todo.propTypes = {
   removeTodo: PropTypes.func,
   todo: PropTypes.object,
-  toggle: PropTypes.func,
+  toggleTodo: PropTypes.func,
 }

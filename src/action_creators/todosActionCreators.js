@@ -1,6 +1,4 @@
 export const types = {
-  TOGGLE: 'TOGGLE_TODO',
-  REMOVE: 'REMOVE_TODO',
   FETCH_TODOS_REQUEST: 'FETCH_TODOS_REQUEST',
   FETCH_TODOS_SUCCESS: 'FETCH_TODOS_SUCCESS',
   FETCH_TODOS_ERROR: 'FETCH_TODOS_ERROR',
@@ -10,14 +8,13 @@ export const types = {
   REMOVE_TODO_REQUEST: 'REMOVE_TODO_REQUEST',
   REMOVE_TODO_SUCCESS: 'REMOVE_TODO_SUCCESS',
   REMOVE_TODO_ERROR: 'REMOVE_TODO_ERROR',
+  TOGGLE_TODO_REQUEST: 'TOGGLE_TODO_REQUEST',
+  TOGGLE_TODO_SUCCESS: 'TOGGLE_TODO_SUCCESS',
+  TOGGLE_TODO_ERROR: 'TOGGLE_TODO_ERROR',
 }
 
 export const toggle = index => {
   return { type: types.TOGGLE, payload: index }
-}
-
-export const remove = index => {
-  return { type: types.REMOVE, payload: index }
 }
 
 const fetchTodosRequest = () => {
@@ -112,10 +109,43 @@ export const removeTodo = (url, params) => {
     dispatch(removeTodoRequest())
     return fetchData(url, params).then(([response]) => {
       if (response.status === 200) {
-        const id = response.url.split('/').slice(-1)[0]
+        const id = Number(response.url.split('/').slice(-1)[0])
         dispatch(removeTodoSuccess(id))
       } else {
         dispatch(removeTodoError())
+      }
+    })
+  }
+}
+
+const toggleTodoRequest = () => {
+  return {
+    type: types.TOGGLE_TODO_REQUEST,
+  }
+}
+
+const toggleTodoSuccess = index => {
+  return {
+    type: types.TOGGLE_TODO_SUCCESS,
+    payload: index,
+  }
+}
+
+const toggleTodoError = () => {
+  return {
+    type: types.TOGGLE_TODO_ERROR,
+  }
+}
+
+export const toggleTodo = (url, params) => {
+  return dispatch => {
+    dispatch(toggleTodoRequest())
+    return fetchData(url, params).then(([response]) => {
+      if (response.status === 200) {
+        const id = Number(response.url.split('/').slice(-1)[0])
+        dispatch(toggleTodoSuccess(id))
+      } else {
+        dispatch(toggleTodoError())
       }
     })
   }

@@ -36,7 +36,10 @@ export const reducer = (state = initialState, action) => {
         todos: todos.filter(todo => todo.id !== payload),
       }
     }
-    case types.TOGGLE: {
+    case types.TOGGLE_TODO_REQUEST: {
+      return state
+    }
+    case types.TOGGLE_TODO_SUCCESS: {
       return {
         ...state,
         todos: todos.map(todo => {
