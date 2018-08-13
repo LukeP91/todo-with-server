@@ -4,7 +4,7 @@ const initialState = {
   todos: [],
 }
 
-export const reducer = (state = initialState, action) => {
+export const todosReducer = (state = initialState, action) => {
   const { todos } = state
   const { type, payload } = action
 

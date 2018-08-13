@@ -1,4 +1,4 @@
-import { reducer } from './reducers'
+import { todosReducer as reducer } from './reducers'
 import { types } from '../action_creators/todosActionCreators'
 
 describe('reducer', () => {
@@ -13,8 +13,8 @@ describe('reducer', () => {
       reducer(
         { todos: [] },
         {
-          type: types.ADD,
-          payload: 'new todo',
+          type: types.ADD_TODO_SUCCESS,
+          payload: { description: 'new todo', completed: false, id: 1 },
         },
       ),
     ).toEqual({
@@ -27,8 +27,8 @@ describe('reducer', () => {
           todos: [{ description: 'old todo', completed: true, id: 1 }],
         },
         {
-          type: types.ADD,
-          payload: 'new todo',
+          type: types.ADD_TODO_SUCCESS,
+          payload: { description: 'new todo', completed: false, id: 2 },
         },
       ),
     ).toEqual({
@@ -46,7 +46,7 @@ describe('reducer', () => {
           todos: [{ description: 'todo', completed: true, id: 1 }],
         },
         {
-          type: types.REMOVE,
+          type: types.REMOVE_TODO_SUCCESS,
           payload: 1,
         },
       ),
@@ -62,7 +62,7 @@ describe('reducer', () => {
           todos: [{ description: 'todo', completed: true, id: 1 }],
         },
         {
-          type: types.TOGGLE,
+          type: types.TOGGLE_TODO_SUCCESS,
           payload: 1,
         },
       ),
@@ -77,7 +77,7 @@ describe('reducer', () => {
         todos: [{ description: 'todo', completed: false, id: 1 }],
       },
       {
-        type: types.TOGGLE,
+        type: types.TOGGLE_TODO_SUCCESS,
         payload: 1,
       },
     ),
