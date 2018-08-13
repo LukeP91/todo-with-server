@@ -7,6 +7,9 @@ export const types = {
   ADD_TODO_REQUEST: 'ADD_TODO_REQUEST',
   ADD_TODO_SUCCESS: 'ADD_TODO_SUCCESS',
   ADD_TODO_ERROR: 'ADD_TODO_ERROR',
+  REMOVE_TODO_REQUEST: 'REMOVE_TODO_REQUEST',
+  REMOVE_TODO_SUCCESS: 'REMOVE_TODO_SUCCESS',
+  REMOVE_TODO_ERROR: 'REMOVE_TODO_ERROR',
 }
 
 export const toggle = index => {
@@ -80,6 +83,39 @@ export const addTodo = (url, params) => {
         dispatch(addTodoSuccess(json))
       } else {
         dispatch(addTodoError())
+      }
+    })
+  }
+}
+
+const removeTodoRequest = () => {
+  return {
+    type: types.REMOVE_TODO_REQUEST,
+  }
+}
+
+const removeTodoSuccess = index => {
+  return {
+    type: types.REMOVE_TODO_SUCCESS,
+    payload: index,
+  }
+}
+
+const removeTodoError = () => {
+  return {
+    type: types.REMOVE_TODO_ERROR,
+  }
+}
+
+export const removeTodo = (url, params) => {
+  return dispatch => {
+    dispatch(removeTodoRequest())
+    return fetchData(url, params).then(([response]) => {
+      if (response.status === 200) {
+        const id = response.url.split('/').slice(-1)[0]
+        dispatch(removeTodoSuccess(id))
+      } else {
+        dispatch(removeTodoError())
       }
     })
   }

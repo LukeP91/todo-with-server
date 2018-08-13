@@ -27,7 +27,10 @@ export const reducer = (state = initialState, action) => {
         todos: [...todos, payload],
       }
     }
-    case types.REMOVE: {
+    case types.REMOVE_TODO_REQUEST: {
+      return state
+    }
+    case types.REMOVE_TODO_SUCCESS: {
       return {
         ...state,
         todos: todos.filter(todo => todo.id !== payload),
