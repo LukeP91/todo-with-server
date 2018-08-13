@@ -44,7 +44,12 @@ export const todosReducer = (state = initialState, action) => {
         ...state,
         todos: todos.map(todo => {
           if (todo.id === payload) {
-            return { description: todo.description, completed: !todo.completed, id: todo.id }
+            return {
+              title: todo.title,
+              description: todo.description,
+              completed: !todo.completed,
+              id: todo.id,
+            }
           } else {
             return todo
           }

@@ -2,17 +2,20 @@
   "todos": [
     {
       "id": 1,
-      "description": "Create db for json server",
+      "title": "Create db for json server",
+      "description": "Create db for json server so uber React app has some backend to connected to",
       "completed": true
     },
     {
       "id": 2,
-      "description": "Create local store version of the app",
-      "completed": false
+      "title": "Create local store version of the app",
+      "description": "Create local store version of the app as first milestone",
+      "completed": true
     },
     {
       "id": 3,
-      "description": "Fetch data from json server",
+      "title": "Fetch data from json server",
+      "description": "Learn how to fetch information from server in React",
       "completed": false
     }
   ]

@@ -8,9 +8,23 @@ class Todo extends Component {
     const { todo } = this.props
 
     if (todo.completed) {
-      return <strike>{todo.description}</strike>
+      return (
+        <div>
+          <p>
+            <b>
+              <strike>{todo.title}</strike>
+            </b>
+          </p>
+          <p>{'Description: ' + todo.description}</p>
+        </div>
+      )
     } else {
-      return <span>{todo.description}</span>
+      return (
+        <div>
+          <p><b>{todo.title}</b></p>
+          <p>{'Description: ' + todo.description}</p>
+        </div>
+      )
     }
   }
 
