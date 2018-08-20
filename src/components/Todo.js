@@ -2,38 +2,27 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { toggleTodo, removeTodo } from '../action_creators/todosActionCreators'
+import ListItem from '@material-ui/core/ListItem'
+import ListItemIcon from '@material-ui/core/ListItemIcon'
+import ListItemText from '@material-ui/core/ListItemText'
+import CheckCircleIcon from '@material-ui/icons/CheckCircle'
+import DeleteIcon from '@material-ui/icons/Delete'
 
 class Todo extends Component {
-  description = () => {
-    const { todo } = this.props
-
-    if (todo.completed) {
-      return (
-        <div>
-          <p>
-            <b>
-              <strike>{todo.title}</strike>
-            </b>
-          </p>
-          <p>{'Description: ' + todo.description}</p>
-        </div>
-      )
-    } else {
-      return (
-        <div>
-          <p><b>{todo.title}</b></p>
-          <p>{'Description: ' + todo.description}</p>
-        </div>
-      )
-    }
-  }
-
   render() {
     const { toggleTodo, removeTodo, todo } = this.props
-
+    let checkIcon = null
+    if (todo.completed) {
+      checkIcon = (
+        <ListItemIcon>
+          <CheckCircleIcon />
+        </ListItemIcon>
+      )
+    }
     return (
-      <div>
-        <div
+      <ListItem button>
+        {checkIcon}
+        <ListItemText
           onClick={() => {
             toggleTodo(`http://localhost:3001/todos/${todo.id}`, {
               method: 'PATCH',
@@ -44,10 +33,10 @@ class Todo extends Component {
               body: JSON.stringify({ completed: !todo.completed }),
             })
           }}
-        >
-          {this.description()}
-        </div>
-        <button
+          primary={todo.title}
+          secondary={todo.description}
+        />
+        <ListItemIcon
           onClick={() => {
             removeTodo(`http://localhost:3001/todos/${todo.id}`, {
               method: 'DELETE',
@@ -58,9 +47,9 @@ class Todo extends Component {
             })
           }}
         >
-          X
-        </button>
-      </div>
+          <DeleteIcon />
+        </ListItemIcon>
+      </ListItem>
     )
   }
 }

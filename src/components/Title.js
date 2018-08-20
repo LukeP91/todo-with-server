@@ -1,17 +1,39 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { withStyles } from '@material-ui/core/styles'
+import AppBar from '@material-ui/core/AppBar'
+import Toolbar from '@material-ui/core/Toolbar'
+import Typography from '@material-ui/core/Typography'
 
-export default class Input extends Component {
+const styles = {
+  root: {
+    flexGrow: 1,
+    marginBottom: '15px',
+  },
+  flex: {
+    flexGrow: 1,
+  },
+}
+
+class Title extends Component {
   render() {
-    const { title } = this.props
+    const { classes } = this.props
     return (
-      <div>
-        <div>{title}</div>
+      <div className={classes.root}>
+        <AppBar position="static">
+          <Toolbar>
+            <Typography className={classes.flex} color="inherit" variant="title">
+              Todos
+            </Typography>
+          </Toolbar>
+        </AppBar>
       </div>
     )
   }
 }
 
-Input.propTypes = {
-  title: PropTypes.string,
+Title.propTypes = {
+  classes: PropTypes.object.isRequired,
 }
+
+export default withStyles(styles)(Title)
