@@ -1,16 +1,16 @@
-import { todosReducer as reducer } from './reducers'
+import { todosReducer } from './todosReducer'
 import { types } from '../action_creators/todosActionCreators'
 
-describe('reducer', () => {
+describe('todosReducer', () => {
   test('returns initial state', () => {
-    expect(reducer(undefined, {})).toEqual({
+    expect(todosReducer(undefined, {})).toEqual({
       todos: [],
     })
   })
 
   test('handle ADD', () => {
     expect(
-      reducer(
+      todosReducer(
         { todos: [] },
         {
           type: types.ADD_TODO_SUCCESS,
@@ -22,7 +22,7 @@ describe('reducer', () => {
     })
 
     expect(
-      reducer(
+      todosReducer(
         {
           todos: [{ title: 'old_title', description: 'old todo', completed: true, id: 1 }],
         },
@@ -41,7 +41,7 @@ describe('reducer', () => {
 
   test('handle REMOVE', () => {
     expect(
-      reducer(
+      todosReducer(
         {
           todos: [{ title: 'new_title', description: 'todo', completed: true, id: 1 }],
         },
@@ -57,7 +57,7 @@ describe('reducer', () => {
 
   test('handle TOGGLE', () => {
     expect(
-      reducer(
+      todosReducer(
         {
           todos: [{ title: 'new_title', description: 'todo', completed: true, id: 1 }],
         },
@@ -72,7 +72,7 @@ describe('reducer', () => {
   })
 
   expect(
-    reducer(
+    todosReducer(
       {
         todos: [{ title: 'new_title', description: 'todo', completed: false, id: 1 }],
       },

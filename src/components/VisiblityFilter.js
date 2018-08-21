@@ -3,17 +3,17 @@ import Button from '@material-ui/core/Button'
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 
-import { setStatusFilter } from '../action_creators/todosActionCreators'
+import { setVisiblityFilter } from '../action_creators/filterActionCreators'
 
-class StatusFilter extends Component {
+class VisibilityFilter extends Component {
   button = text => {
-    const { filter, setStatusFilter } = this.props
+    const { filter, setVisiblityFilter } = this.props
 
     if (filter !== text) {
       return (
         <Button
           onClick={() => {
-            setStatusFilter(text)
+            setVisiblityFilter(text)
           }}
         >
           {text}
@@ -35,19 +35,19 @@ class StatusFilter extends Component {
 }
 
 const mapStateToProps = state => ({
-  filter: state.statusFilter,
+  filter: state.filtersReducer.visiblityFilter,
 })
 
 const mapDispatchToProps = {
-  setStatusFilter,
+  setVisiblityFilter,
 }
 
-StatusFilter.propTypes = {
+VisibilityFilter.propTypes = {
   filter: PropTypes.string,
-  setStatusFilter: PropTypes.func,
+  setVisiblityFilter: PropTypes.func,
 }
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(StatusFilter)
+)(VisibilityFilter)

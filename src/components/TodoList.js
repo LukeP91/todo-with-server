@@ -7,11 +7,12 @@ import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import TextField from '@material-ui/core/TextField'
 
-import { fetchTodos, setFilter } from '../action_creators/todosActionCreators'
+import { fetchTodos } from '../action_creators/todosActionCreators'
 import { filteredTodos, filterTodosByStatus } from '../filters/filterTodos'
+import { setFilter } from '../action_creators/filterActionCreators'
 import Modal from './Form/FormModal'
-import StatusFilter from './StatusFilter'
 import Todo from './Todo'
+import VisibilityFilter from './VisiblityFilter'
 
 const styles = theme => ({
   paper: {
@@ -64,7 +65,7 @@ class TodoList extends Component {
           value={this.state.name}
         />
         <List>{todos.map((todo, i) => <Todo key={i} todo={todo} />)}</List>
-        <StatusFilter />
+        <VisibilityFilter />
         <Modal />
       </Paper>
     )
@@ -72,7 +73,10 @@ class TodoList extends Component {
 }
 
 const mapStateToProps = state => ({
-  todos: filterTodosByStatus(filteredTodos(state.todos, state.filter), state.statusFilter),
+  todos: filterTodosByStatus(
+    filteredTodos(state.todosReducer.todos, state.filtersReducer.query),
+    state.filtersReducer.visiblityFilter,
+  ),
 })
 
 const mapDispatchToProps = {
