@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import _ from 'lodash'
+import { withStyles } from '@material-ui/core/styles'
+import FormControl from '@material-ui/core/FormControl'
+import FormHelperText from '@material-ui/core/FormHelperText'
 import Input from '@material-ui/core/Input'
 import InputLabel from '@material-ui/core/InputLabel'
-import FormHelperText from '@material-ui/core/FormHelperText'
-import FormControl from '@material-ui/core/FormControl'
-import { withStyles } from '@material-ui/core/styles'
-import _ from 'lodash'
+import PropTypes from 'prop-types'
+import React, { Component } from 'react'
 
 const styles = {
   container: {
@@ -14,14 +14,6 @@ const styles = {
 }
 
 class TextInput extends Component {
-  state = {
-    value: '',
-  }
-
-  handleChange = event => {
-    this.setState({ value: event.target.value })
-  }
-
   renderInput = props => {
     const {
       field: { name, ...field },

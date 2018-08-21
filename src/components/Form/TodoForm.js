@@ -1,9 +1,10 @@
-import React from 'react'
 import { Field, Form } from 'formik'
-import TextInput from './TextInput'
 import { withStyles } from '@material-ui/core/styles'
 import Button from '@material-ui/core/Button'
 import PropTypes from 'prop-types'
+import React from 'react'
+
+import TextInput from './TextInput'
 
 const styles = {
   container: {

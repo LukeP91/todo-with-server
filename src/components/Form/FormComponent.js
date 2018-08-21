@@ -1,9 +1,10 @@
-import React, { Component } from 'react'
-import schema from './schema'
-import { addTodo } from '../../action_creators/todosActionCreators'
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Formik } from 'formik'
+import PropTypes from 'prop-types'
+import React, { Component } from 'react'
+
+import { addTodo } from '../../action_creators/todosActionCreators'
+import schema from './schema'
 import TodoForm from './TodoForm'
 
 class FormComponent extends Component {

@@ -2,6 +2,8 @@ import { types } from '../action_creators/todosActionCreators'
 
 const initialState = {
   todos: [],
+  filter: '',
+  statusFilter: 'All',
 }
 
 export const todosReducer = (state = initialState, action) => {
@@ -54,6 +56,18 @@ export const todosReducer = (state = initialState, action) => {
             return todo
           }
         }),
+      }
+    }
+    case types.SET_FILTER: {
+      return {
+        ...state,
+        filter: payload,
+      }
+    }
+    case types.SET_STATUS_FILTER: {
+      return {
+        ...state,
+        statusFilter: payload,
       }
     }
     default: {

@@ -1,10 +1,11 @@
-import React from 'react'
-import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
-import Form from './FormComponent'
-import Modal from '@material-ui/core/Modal'
-import Button from '@material-ui/core/Button'
 import AddIcon from '@material-ui/icons/Add'
+import Button from '@material-ui/core/Button'
+import Modal from '@material-ui/core/Modal'
+import PropTypes from 'prop-types'
+import React from 'react'
+
+import Form from './FormComponent'
 
 function rand() {
   return Math.round(Math.random() * 20) - 10

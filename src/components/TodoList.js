@@ -1,66 +1,90 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import Todo from './Todo'
-import { fetchTodos } from '../action_creators/todosActionCreators'
+import _ from 'lodash'
 import { connect } from 'react-redux'
+import { withStyles } from '@material-ui/core/styles'
 import List from '@material-ui/core/List'
 import Paper from '@material-ui/core/Paper'
-import Grid from '@material-ui/core/Grid'
-import { withStyles } from '@material-ui/core/styles'
+import PropTypes from 'prop-types'
+import React, { Component } from 'react'
+import TextField from '@material-ui/core/TextField'
+
+import { fetchTodos, setFilter } from '../action_creators/todosActionCreators'
+import { filteredTodos, filterTodosByStatus } from '../filters/filterTodos'
 import Modal from './Form/FormModal'
+import StatusFilter from './StatusFilter'
+import Todo from './Todo'
 
 const styles = theme => ({
-  root: {
-    flexGrow: 1,
-  },
   paper: {
     padding: theme.spacing.unit * 2,
-    textAlign: 'center',
     color: theme.palette.text.secondary,
   },
-  fab: {
-    position: 'absolute',
-    bottom: theme.spacing.unit * 4,
-    right: theme.spacing.unit * 4,
+  textField: {
+    marginLeft: theme.spacing.unit * 3,
+    marginRight: theme.spacing.unit,
+    marginTop: 0,
+    width: '70%',
   },
 })
 
 class TodoList extends Component {
+  constructor() {
+    super()
+    this.debounceHandleChange = _.debounce(this.handleChange, 200)
+  }
+
+  state = {
+    value: '',
+  }
+
   componentDidMount() {
     this.props.fetchTodos('http://localhost:3001/todos', { method: 'GET' })
+  }
+
+  handleChange = value => {
+    const { setFilter } = this.props
+    this.setState({
+      value: value,
+    })
+    setFilter(value)
   }
 
   render() {
     const { todos, classes } = this.props
 
     return (
-      <Grid container spacing={24}>
-        <Grid item xs={4}>
-          <Paper className={classes.paper}>
-            <List>{todos.map((todo, i) => <Todo key={i} todo={todo} />)}</List>
-            <Modal />
-          </Paper>
-        </Grid>
-        <Grid item xs={8}>
-          <Paper className={classes.paper}>xs=6</Paper>
-        </Grid>
-      </Grid>
+      <Paper className={classes.paper}>
+        <TextField
+          className={classes.textField}
+          id="search"
+          label="Search field"
+          onChange={event => {
+            this.debounceHandleChange(event.target.value)
+          }}
+          type="search"
+          value={this.state.name}
+        />
+        <List>{todos.map((todo, i) => <Todo key={i} todo={todo} />)}</List>
+        <StatusFilter />
+        <Modal />
+      </Paper>
     )
   }
 }
 
 const mapStateToProps = state => ({
-  todos: state.todos,
+  todos: filterTodosByStatus(filteredTodos(state.todos, state.filter), state.statusFilter),
 })
 
 const mapDispatchToProps = {
   fetchTodos,
+  setFilter,
 }
 
 TodoList.propTypes = {
-  todos: PropTypes.array,
-  fetchTodos: PropTypes.func,
   classes: PropTypes.object.isRequired,
+  fetchTodos: PropTypes.func,
+  setFilter: PropTypes.func,
+  todos: PropTypes.array,
 }
 
 export default withStyles(styles)(

@@ -11,10 +11,8 @@ export const types = {
   TOGGLE_TODO_REQUEST: 'TOGGLE_TODO_REQUEST',
   TOGGLE_TODO_SUCCESS: 'TOGGLE_TODO_SUCCESS',
   TOGGLE_TODO_ERROR: 'TOGGLE_TODO_ERROR',
-}
-
-export const toggle = index => {
-  return { type: types.TOGGLE, payload: index }
+  SET_FILTER: 'SET_FILTER',
+  SET_STATUS_FILTER: 'SET_STATUS_FILTER',
 }
 
 const fetchTodosRequest = () => {
@@ -148,5 +146,19 @@ export const toggleTodo = (url, params) => {
         dispatch(toggleTodoError())
       }
     })
+  }
+}
+
+export const setFilter = value => {
+  return {
+    type: types.SET_FILTER,
+    payload: value,
+  }
+}
+
+export const setStatusFilter = value => {
+  return {
+    type: types.SET_STATUS_FILTER,
+    payload: value,
   }
 }
