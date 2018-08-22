@@ -1,11 +1,11 @@
-import { types } from '../action_creators/filterActionCreators'
+import { types } from './types'
 
 const initialState = {
   query: '',
   visiblityFilter: 'All',
 }
 
-export const filtersReducer = (state = initialState, action) => {
+export const filters = (state = initialState, action) => {
   const { type, payload } = action
 
   switch (type) {

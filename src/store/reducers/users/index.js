@@ -1,10 +1,10 @@
-import { types } from '../action_creators/usersActionCreators'
+import { types } from './types'
 
 const initialState = {
   users: [],
 }
 
-export const usersReducer = (state = initialState, action) => {
+export const users = (state = initialState, action) => {
   const { type, payload } = action
 
   switch (type) {

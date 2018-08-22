@@ -7,9 +7,9 @@ import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import TextField from '@material-ui/core/TextField'
 
-import { fetchTodos } from '../action_creators/todosActionCreators'
+import { fetchTodos } from '../store/reducers/todos/actions'
 import { filteredTodos, filterTodosByStatus } from '../filters/filterTodos'
-import { setFilter } from '../action_creators/filterActionCreators'
+import { setFilter } from '../store/reducers/filters/actions'
 import Modal from './Form/FormModal'
 import Todo from './Todo'
 import VisibilityFilter from './VisiblityFilter'
@@ -74,8 +74,8 @@ class TodoList extends Component {
 
 const mapStateToProps = state => ({
   todos: filterTodosByStatus(
-    filteredTodos(state.todosReducer.todos, state.filtersReducer.query),
-    state.filtersReducer.visiblityFilter,
+    filteredTodos(state.todos.todos, state.filters.query),
+    state.filters.visiblityFilter,
   ),
 })
 

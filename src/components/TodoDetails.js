@@ -9,8 +9,8 @@ import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import Typography from '@material-ui/core/Typography'
 
-import { fetchUsers } from '../action_creators/usersActionCreators'
-import { toggleTodo, removeTodo, editTodo } from '../action_creators/todosActionCreators'
+import { fetchUsers } from '../store/reducers/users/actions'
+import { toggleTodo, removeTodo, editTodo } from '../store/reducers/todos/actions'
 import Form from '../components/Form/FormComponent'
 
 function getModalStyle() {
@@ -89,6 +89,7 @@ class TodoDetails extends Component {
       },
       body: JSON.stringify(values),
     })
+    this.handleClose()
   }
 
   userName = todo => {
@@ -157,8 +158,8 @@ class TodoDetails extends Component {
 }
 
 const mapStateToProps = state => ({
-  todos: state.todosReducer.todos,
-  users: state.usersReducer.users,
+  todos: state.todos.todos,
+  users: state.users.users,
 })
 
 const mapDispatchToProps = {

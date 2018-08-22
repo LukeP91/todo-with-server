@@ -3,9 +3,9 @@ import { Formik } from 'formik'
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 
+import { fetchUsers } from '../../store/reducers/users/actions'
 import schema from './schema'
 import TodoForm from './TodoForm'
-import { fetchUsers } from '../../action_creators/usersActionCreators'
 
 class FormComponent extends Component {
   componentDidMount() {
@@ -27,7 +27,7 @@ class FormComponent extends Component {
 }
 
 const mapStateToProps = state => ({
-  users: state.usersReducer.users,
+  users: state.users.users,
 })
 
 const mapDispatchToProps = {

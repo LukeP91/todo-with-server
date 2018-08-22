@@ -6,8 +6,8 @@ import Modal from '@material-ui/core/Modal'
 import PropTypes from 'prop-types'
 import React from 'react'
 
+import { addTodo } from '../../store/reducers/todos/actions'
 import Form from './FormComponent'
-import { addTodo } from '../../action_creators/todosActionCreators'
 
 function getModalStyle() {
   return {
@@ -57,6 +57,7 @@ class SimpleModal extends React.Component {
       body: JSON.stringify(values),
     })
     actions.resetForm()
+    this.handleClose()
   }
 
   render() {
@@ -80,7 +81,11 @@ class SimpleModal extends React.Component {
           open={this.state.open}
         >
           <div className={classes.paper} style={getModalStyle()}>
-            <Form initialValues={{ title: '', description: '', userId: '' }} submit={this.submit} />
+            <Form
+              handleClose={this.handleClose}
+              initialValues={{ title: '', description: '', userId: '' }}
+              submit={this.submit}
+            />
           </div>
         </Modal>
       </div>

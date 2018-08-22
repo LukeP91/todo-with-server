@@ -1,10 +1,10 @@
-import { types } from '../action_creators/todosActionCreators'
+import { types } from './types'
 
 const initialState = {
   todos: [],
 }
 
-export const todosReducer = (state = initialState, action) => {
+export const todos = (state = initialState, action) => {
   const { todos } = state
   const { type, payload } = action
 

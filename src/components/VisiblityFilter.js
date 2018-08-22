@@ -3,7 +3,7 @@ import Button from '@material-ui/core/Button'
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 
-import { setVisiblityFilter } from '../action_creators/filterActionCreators'
+import { setVisiblityFilter } from '../store/reducers/filters/actions'
 
 class VisibilityFilter extends Component {
   button = text => {
@@ -35,7 +35,7 @@ class VisibilityFilter extends Component {
 }
 
 const mapStateToProps = state => ({
-  filter: state.filtersReducer.visiblityFilter,
+  filter: state.filters.visiblityFilter,
 })
 
 const mapDispatchToProps = {
