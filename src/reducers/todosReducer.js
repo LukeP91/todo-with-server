@@ -45,10 +45,28 @@ export const todosReducer = (state = initialState, action) => {
         todos: todos.map(todo => {
           if (todo.id === payload) {
             return {
-              title: todo.title,
-              description: todo.description,
+              ...todo,
               completed: !todo.completed,
-              id: todo.id,
+            }
+          } else {
+            return todo
+          }
+        }),
+      }
+    }
+    case types.EDIT_TODO_REQUEST: {
+      return state
+    }
+    case types.EDIT_TODO_SUCCESS: {
+      return {
+        ...state,
+        todos: todos.map(todo => {
+          if (todo.id === payload.id) {
+            return {
+              ...todo,
+              title: payload.title,
+              description: payload.description,
+              userId: payload.userId,
             }
           } else {
             return todo

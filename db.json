@@ -1,27 +1,4 @@
 {
-  "todos": [
-    {
-      "id": 1,
-      "title": "Create db for json server",
-      "description": "Create db for json server so uber React app has some backend to connected to",
-      "completed": true,
-      "user": 1
-    },
-    {
-      "id": 2,
-      "title": "Create local store version of the app",
-      "description": "Create local store version of the app as first milestone",
-      "completed": false,
-      "user": 2
-    },
-    {
-      "id": 3,
-      "title": "Fetch data from json server",
-      "description": "Learn how to fetch information from server in React",
-      "completed": false,
-      "user": 3
-    }
-  ],
   "users": [
     {
       "id": 1,
@@ -37,6 +14,29 @@
       "id": 3,
       "email": "joe.doe@example.com",
       "name": "Joe Doe"
+    }
+  ],
+  "todos": [
+    {
+      "id": 1,
+      "title": "Create db for JSON",
+      "description": "Create db for json server so uber React app has some backend to connected to",
+      "completed": false,
+      "userId": 2
+    },
+    {
+      "id": 2,
+      "title": "Create local store version of the app",
+      "description": "Create local store version of the app as first milestone",
+      "completed": false,
+      "userId": 2
+    },
+    {
+      "id": 3,
+      "title": "Fetch data from json server",
+      "description": "Learn how to fetch information from server in React",
+      "completed": false,
+      "userId": 3
     }
   ]
 }

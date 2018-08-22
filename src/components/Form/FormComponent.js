@@ -3,48 +3,45 @@ import { Formik } from 'formik'
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 
-import { addTodo } from '../../action_creators/todosActionCreators'
 import schema from './schema'
 import TodoForm from './TodoForm'
+import { fetchUsers } from '../../action_creators/usersActionCreators'
 
 class FormComponent extends Component {
-  submit = (values, actions) => {
-    const { addTodo } = this.props
-
-    addTodo('http://localhost:3001/todos', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(values),
-    })
-    actions.resetForm()
+  componentDidMount() {
+    this.props.fetchUsers('http://localhost:3001/users', { method: 'GET' })
   }
 
   render() {
-    const initialValues = { title: '', description: '' }
+    const { users, initialValues, submit } = this.props
 
     return (
       <Formik
         initialValues={initialValues}
-        onSubmit={this.submit}
-        render={formikProps => <TodoForm {...formikProps} />}
+        onSubmit={submit}
+        render={formikProps => <TodoForm {...formikProps} users={users} />}
         validationSchema={schema}
       />
     )
   }
 }
 
+const mapStateToProps = state => ({
+  users: state.usersReducer.users,
+})
+
 const mapDispatchToProps = {
-  addTodo,
+  fetchUsers,
 }
 
 FormComponent.propTypes = {
-  addTodo: PropTypes.func,
+  fetchUsers: PropTypes.func,
+  initialValues: PropTypes.object,
+  submit: PropTypes.func,
+  users: PropTypes.array,
 }
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps,
 )(FormComponent)

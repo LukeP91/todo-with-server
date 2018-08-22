@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 
 import TextInput from './TextInput'
+import UserSelect from './UserSelect'
 
 const styles = {
   container: {
@@ -14,10 +15,11 @@ const styles = {
   },
 }
 
-const TodoForm = ({ classes }) => (
+const TodoForm = ({ classes, users }) => (
   <Form className={classes.container}>
     <Field component={TextInput} label="Title" name="title" />
     <Field component={TextInput} label="Description" name="description" />
+    <Field component={UserSelect} label="User" name="userId" users={users} />
     <Button color="primary" type="submit" variant="contained">
       Submit
     </Button>
@@ -26,6 +28,7 @@ const TodoForm = ({ classes }) => (
 
 TodoForm.propTypes = {
   classes: PropTypes.object.isRequired,
+  users: PropTypes.array,
 }
 
 export default withStyles(styles)(TodoForm)

@@ -11,6 +11,9 @@ export const types = {
   TOGGLE_TODO_REQUEST: 'TOGGLE_TODO_REQUEST',
   TOGGLE_TODO_SUCCESS: 'TOGGLE_TODO_SUCCESS',
   TOGGLE_TODO_ERROR: 'TOGGLE_TODO_ERROR',
+  EDIT_TODO_REQUEST: 'EDIT_TODO_REQUEST',
+  EDIT_TODO_SUCCESS: 'EDIT_TODO_SUCCESS',
+  EDIT_TODO_ERROR: 'EDIT_TODO_ERROR',
 }
 
 const fetchTodosRequest = () => {
@@ -142,6 +145,38 @@ export const toggleTodo = (url, params) => {
         dispatch(toggleTodoSuccess(id))
       } else {
         dispatch(toggleTodoError())
+      }
+    })
+  }
+}
+
+const editTodoRequest = () => {
+  return {
+    type: types.EDIT_TODO_REQUEST,
+  }
+}
+
+const editTodoSuccess = payload => {
+  return {
+    type: types.EDIT_TODO_SUCCESS,
+    payload,
+  }
+}
+
+const editTodoError = () => {
+  return {
+    type: types.EDIT_TODO_ERROR,
+  }
+}
+
+export const editTodo = (url, params) => {
+  return dispatch => {
+    dispatch(editTodoRequest())
+    return fetchData(url, params).then(([response, json]) => {
+      if (response.status === 200) {
+        dispatch(editTodoSuccess(json))
+      } else {
+        dispatch(editTodoError())
       }
     })
   }

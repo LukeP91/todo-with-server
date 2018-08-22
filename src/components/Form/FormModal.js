@@ -1,3 +1,4 @@
+import { connect } from 'react-redux'
 import { withStyles } from '@material-ui/core/styles'
 import AddIcon from '@material-ui/icons/Add'
 import Button from '@material-ui/core/Button'
@@ -6,19 +7,13 @@ import PropTypes from 'prop-types'
 import React from 'react'
 
 import Form from './FormComponent'
-
-function rand() {
-  return Math.round(Math.random() * 20) - 10
-}
+import { addTodo } from '../../action_creators/todosActionCreators'
 
 function getModalStyle() {
-  const top = 50 + rand()
-  const left = 50 + rand()
-
   return {
-    top: `${top}%`,
-    left: `${left}%`,
-    transform: `translate(-${top}%, -${left}%)`,
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
   }
 }
 
@@ -50,6 +45,20 @@ class SimpleModal extends React.Component {
     this.setState({ open: false })
   }
 
+  submit = (values, actions) => {
+    const { addTodo } = this.props
+
+    addTodo('http://localhost:3001/todos', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(values),
+    })
+    actions.resetForm()
+  }
+
   render() {
     const { classes } = this.props
 
@@ -71,7 +80,7 @@ class SimpleModal extends React.Component {
           open={this.state.open}
         >
           <div className={classes.paper} style={getModalStyle()}>
-            <Form />
+            <Form initialValues={{ title: '', description: '', userId: '' }} submit={this.submit} />
           </div>
         </Modal>
       </div>
@@ -79,8 +88,18 @@ class SimpleModal extends React.Component {
   }
 }
 
+const mapDispatchToProps = {
+  addTodo,
+}
+
 SimpleModal.propTypes = {
+  addTodo: PropTypes.func,
   classes: PropTypes.object.isRequired,
 }
 
-export default withStyles(styles)(SimpleModal)
+export default withStyles(styles)(
+  connect(
+    null,
+    mapDispatchToProps,
+  )(SimpleModal),
+)
