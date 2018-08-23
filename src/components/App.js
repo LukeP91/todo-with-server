@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 
 import NoDetails from './NoDetails'
 import Title from './Title'
-import TodoDetails from './TodoDetails'
+import TodoContainer from './Todo/TodoContainer'
 import TodoList from './TodoList'
 
 export default class App extends Component {
@@ -20,7 +20,7 @@ export default class App extends Component {
             <Grid item xs={8}>
               <Switch>
                 <Route component={NoDetails} exact path="/" />
-                <Route path="/todo/:id" render={props => <TodoDetails {...props} />} />
+                <Route path="/todo/:id" render={props => <TodoContainer {...props} />} />
               </Switch>
             </Grid>
           </Grid>
