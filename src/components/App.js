@@ -2,10 +2,11 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Grid from '@material-ui/core/Grid'
 import React, { Component } from 'react'
 
-import NoDetails from './NoDetails'
+import AddTodo from './AddTodo'
+import NoDetails from './TodoDetails/NoDetails'
 import Title from './Title'
-import TodoContainer from './Todo/TodoContainer'
-import TodoList from './TodoList'
+import TodoContainer from './TodoDetails/TodoContainer'
+import TodoList from './TodoList/TodoList'
 
 export default class App extends Component {
   render() {
@@ -24,6 +25,7 @@ export default class App extends Component {
               </Switch>
             </Grid>
           </Grid>
+          <AddTodo />
         </div>
       </BrowserRouter>
     )

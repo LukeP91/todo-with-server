@@ -3,7 +3,7 @@ import Button from '@material-ui/core/Button'
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 
-import { setVisiblityFilter } from '../store/reducers/filters/actions'
+import { setVisiblityFilter } from '../../store/reducers/filters/actions'
 
 class VisibilityFilter extends Component {
   button = text => {

@@ -7,11 +7,10 @@ import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import TextField from '@material-ui/core/TextField'
 
-import { fetchTodos } from '../store/reducers/todos/actions'
-import { filteredTodos, filterTodosByStatus } from '../filters/filterTodos'
-import { setFilter } from '../store/reducers/filters/actions'
-import Modal from './Form/FormModal'
-import Todo from './Todo'
+import { fetchTodos } from '../../store/reducers/todos/actions'
+import { filteredTodos, filterTodosByStatus } from '../../filters/filterTodos'
+import { setFilter } from '../../store/reducers/filters/actions'
+import Link from './Link'
 import VisibilityFilter from './VisiblityFilter'
 
 const styles = theme => ({
@@ -64,9 +63,8 @@ class TodoList extends Component {
           type="search"
           value={this.state.name}
         />
-        <List>{todos.map((todo, i) => <Todo key={i} todo={todo} />)}</List>
+        <List>{todos.map((todo, i) => <Link key={i} todo={todo} />)}</List>
         <VisibilityFilter />
-        <Modal />
       </Paper>
     )
   }

@@ -4,7 +4,7 @@ import ListItemText from '@material-ui/core/ListItemText'
 import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 
-class Todo extends Component {
+class Link extends Component {
   render() {
     const { todo } = this.props
     return (
@@ -17,8 +17,8 @@ class Todo extends Component {
   }
 }
 
-export default Todo
+export default Link
 
-Todo.propTypes = {
+Link.propTypes = {
   todo: PropTypes.object,
 }

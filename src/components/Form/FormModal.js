@@ -1,6 +1,5 @@
 import { connect } from 'react-redux'
 import { withStyles } from '@material-ui/core/styles'
-import AddIcon from '@material-ui/icons/Add'
 import Button from '@material-ui/core/Button'
 import Modal from '@material-ui/core/Modal'
 import PropTypes from 'prop-types'
@@ -9,26 +8,25 @@ import React from 'react'
 import { addTodo } from '../../store/reducers/todos/actions'
 import Form from './FormComponent'
 
-function getModalStyle() {
-  return {
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-  }
-}
-
 const styles = theme => ({
-  paper: {
-    position: 'absolute',
-    width: theme.spacing.unit * 50,
-    backgroundColor: theme.palette.background.paper,
-    boxShadow: theme.shadows[5],
-    padding: theme.spacing.unit * 4,
+  button: {},
+  container: {
+    display: 'inline',
   },
   fab: {
-    position: 'absolute',
     bottom: theme.spacing.unit * 4,
+    position: 'absolute',
     right: theme.spacing.unit * 4,
+  },
+  modal: {
+    backgroundColor: theme.palette.background.paper,
+    boxShadow: theme.shadows[5],
+    left: '50%',
+    padding: theme.spacing.unit * 4,
+    position: 'absolute',
+    top: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: theme.spacing.unit * 50,
   },
 })
 
@@ -46,43 +44,29 @@ class SimpleModal extends React.Component {
   }
 
   submit = (values, actions) => {
-    const { addTodo } = this.props
-    addTodo('http://localhost:3001/todos', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(values),
-    })
-    actions.resetForm()
+    const { submit } = this.props
+    submit(values, actions)
     this.handleClose()
   }
 
   render() {
-    const { classes } = this.props
+    const { classes, color, buttonLabel, variant, fab, initialValues } = this.props
 
     return (
-      <div>
+      <div className={classes.container}>
         <Button
-          aria-label="Add"
-          className={classes.fab}
-          color="primary"
+          className={fab ? classes.fab : classes.button}
+          color={color}
           onClick={this.handleOpen}
-          variant="fab"
+          variant={variant}
         >
-          <AddIcon />
+          {buttonLabel}
         </Button>
-        <Modal
-          aria-describedby="simple-modal-description"
-          aria-labelledby="simple-modal-title"
-          onClose={this.handleClose}
-          open={this.state.open}
-        >
-          <div className={classes.paper} style={getModalStyle()}>
+        <Modal onClose={this.handleClose} open={this.state.open}>
+          <div className={classes.modal}>
             <Form
               handleClose={this.handleClose}
-              initialValues={{ title: '', description: '', userId: '', labelsIds: [] }}
+              initialValues={initialValues}
               submit={this.submit}
             />
           </div>
@@ -97,8 +81,13 @@ const mapDispatchToProps = {
 }
 
 SimpleModal.propTypes = {
-  addTodo: PropTypes.func,
+  buttonLabel: PropTypes.any,
   classes: PropTypes.object.isRequired,
+  color: PropTypes.string,
+  fab: PropTypes.bool,
+  initialValues: PropTypes.object.isRequired,
+  submit: PropTypes.func,
+  variant: PropTypes.string,
 }
 
 export default withStyles(styles)(
