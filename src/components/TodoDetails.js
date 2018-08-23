@@ -9,6 +9,7 @@ import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import Typography from '@material-ui/core/Typography'
 
+import { fetchLabels } from '../store/reducers/labels/actions'
 import { fetchUsers } from '../store/reducers/users/actions'
 import { toggleTodo, removeTodo, editTodo } from '../store/reducers/todos/actions'
 import Form from '../components/Form/FormComponent'
@@ -51,6 +52,7 @@ class TodoDetails extends Component {
 
   componentDidMount() {
     this.props.fetchUsers('http://localhost:3001/users', { method: 'GET' })
+    this.props.fetchLabels('http://localhost:3001/labels', { method: 'GET' })
   }
 
   completeTodo = todo => {
@@ -93,16 +95,20 @@ class TodoDetails extends Component {
   }
 
   userName = todo => {
-    if (todo) {
-      const { users } = this.props
-      const user = _.find(users, { id: todo.userId })
-      return user ? user.name : ''
-    }
+    const { users } = this.props
+    const user = _.find(users, { id: todo.userId })
+    return user ? user.name : ''
+  }
+
+  labels = labelsIds => {
+    return this.props.labels
+      .filter(label => _.includes(labelsIds, label.id))
+      .map(label => label.value)
   }
 
   render() {
     const { todos, classes, match } = this.props
-    const todo = _.find(todos, { id: parseInt(match.params.id) })
+    const todo = _.find(todos, { id: parseInt(match.params.id, 10) })
     if (todo) {
       return (
         <Paper className={classes.paper}>
@@ -117,6 +123,9 @@ class TodoDetails extends Component {
           </Typography>
           <Typography align="left" gutterBottom variant="body1">
             {this.userName(todo) ? `User: ${this.userName(todo)}` : 'No user assigned'}
+          </Typography>
+          <Typography align="left" gutterBottom variant="body1">
+            {todo.labelsIds ? `Labels: ${this.labels(todo.labelsIds)}` : 'Labels:'}
           </Typography>
           <Button color="primary" onClick={() => this.completeTodo(todo)}>
             {todo.completed ? 'Reopen' : 'Complete'}
@@ -139,6 +148,7 @@ class TodoDetails extends Component {
                   title: todo.title,
                   description: todo.description,
                   userId: todo.userId,
+                  labelsIds: todo.labelsIds,
                 }}
                 submit={this.updateTodo}
               />
@@ -160,9 +170,11 @@ class TodoDetails extends Component {
 const mapStateToProps = state => ({
   todos: state.todos.todos,
   users: state.users.users,
+  labels: state.labels.labels,
 })
 
 const mapDispatchToProps = {
+  fetchLabels,
   fetchUsers,
   removeTodo,
   toggleTodo,
@@ -171,9 +183,11 @@ const mapDispatchToProps = {
 
 TodoDetails.propTypes = {
   classes: PropTypes.object.isRequired,
+  fetchLabels: PropTypes.func,
   fetchUsers: PropTypes.func,
   history: PropTypes.object,
   match: PropTypes.object.isRequired,
+  labels: PropTypes.array,
   removeTodo: PropTypes.func,
   todos: PropTypes.array,
   toggleTodo: PropTypes.func,

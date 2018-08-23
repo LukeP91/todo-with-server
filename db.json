@@ -1,4 +1,18 @@
 {
+  "labels": [
+    {
+      "id": 1,
+      "value": "test"
+    },
+    {
+      "id": 2,
+      "value": "prod"
+    },
+    {
+      "id": 3,
+      "value": "staging"
+    }
+  ],
   "users": [
     {
       "id": 1,
@@ -22,21 +36,38 @@
       "title": "Create db for JSON",
       "description": "Create db for json server so uber React app has some backend to connected to",
       "completed": false,
-      "userId": 2
+      "userId": 2,
+      "labelsIds": []
     },
     {
       "id": 2,
       "title": "Create local store version of the app",
       "description": "Create local store version of the app as first milestone",
       "completed": false,
-      "userId": 2
+      "userId": 2,
+      "labelsIds": []
     },
     {
       "id": 3,
       "title": "Fetch data from json server",
       "description": "Learn how to fetch information from server in React",
       "completed": false,
-      "userId": 3
+      "userId": 3,
+      "labelsIds": [
+        2,
+        1
+      ]
+    },
+    {
+      "title": "dsadasdasdassdasd",
+      "description": "Create db for json server so uber React app has some backend to connected to",
+      "userId": 2,
+      "labelsIds": [
+        2,
+        1,
+        3
+      ],
+      "id": 4
     }
   ]
 }

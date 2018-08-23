@@ -67,6 +67,7 @@ export const todos = (state = initialState, action) => {
               title: payload.title,
               description: payload.description,
               userId: payload.userId,
+              labelsIds: payload.labelsIds,
             }
           } else {
             return todo

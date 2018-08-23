@@ -47,7 +47,6 @@ class SimpleModal extends React.Component {
 
   submit = (values, actions) => {
     const { addTodo } = this.props
-
     addTodo('http://localhost:3001/todos', {
       method: 'POST',
       headers: {
@@ -83,7 +82,7 @@ class SimpleModal extends React.Component {
           <div className={classes.paper} style={getModalStyle()}>
             <Form
               handleClose={this.handleClose}
-              initialValues={{ title: '', description: '', userId: '' }}
+              initialValues={{ title: '', description: '', userId: '', labelsIds: [] }}
               submit={this.submit}
             />
           </div>

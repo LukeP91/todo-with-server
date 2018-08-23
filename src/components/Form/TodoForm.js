@@ -4,6 +4,7 @@ import Button from '@material-ui/core/Button'
 import PropTypes from 'prop-types'
 import React from 'react'
 
+import LabelSelect from './LabelSelect'
 import TextInput from './TextInput'
 import UserSelect from './UserSelect'
 
@@ -15,11 +16,12 @@ const styles = {
   },
 }
 
-const TodoForm = ({ classes, users }) => (
+const TodoForm = ({ classes, labels, users }) => (
   <Form className={classes.container}>
     <Field component={TextInput} label="Title" name="title" />
     <Field component={TextInput} label="Description" name="description" />
     <Field component={UserSelect} label="User" name="userId" users={users} />
+    <Field component={LabelSelect} label="Labels" labels={labels} name="labelsIds" />
     <Button color="primary" type="submit" variant="contained">
       Submit
     </Button>
@@ -28,6 +30,7 @@ const TodoForm = ({ classes, users }) => (
 
 TodoForm.propTypes = {
   classes: PropTypes.object.isRequired,
+  labels: PropTypes.array,
   users: PropTypes.array,
 }
 

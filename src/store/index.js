@@ -3,10 +3,13 @@ import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 
 import { filters } from './reducers/filters'
+import { labels } from './reducers/labels'
 import { todos } from './reducers/todos'
 import { users } from './reducers/users'
+
 const reducer = combineReducers({
   filters,
+  labels,
   todos,
   users,
 })
