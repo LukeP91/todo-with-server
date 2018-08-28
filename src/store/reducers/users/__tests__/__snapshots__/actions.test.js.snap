@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`actionCreators creates FETCH_USERS_SUCCESS when fetching labels has been done 1`] = `
+Array [
+  Object {
+    "type": "FETCH_USERS_REQUEST",
+  },
+  Object {
+    "payload": Object {
+      "users": Array [
+        Object {
+          "email": "test@example.com",
+          "id": 1,
+          "name": "Test user",
+        },
+        Object {
+          "email": "lukepawlik@example.com",
+          "id": 2,
+          "name": "Luke Pawlik",
+        },
+      ],
+    },
+    "type": "FETCH_USERS_SUCCESS",
+  },
+]
+`;

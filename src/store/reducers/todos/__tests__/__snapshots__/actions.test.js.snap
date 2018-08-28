@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`actionCreators creates ADD_TODO_SUCCESS when adding todo has been successful 1`] = `
+Array [
+  Object {
+    "type": "ADD_TODO_REQUEST",
+  },
+  Object {
+    "payload": Object {
+      "completed": false,
+      "description": "new todo",
+      "id": 1,
+      "labelsIds": Array [
+        1,
+        2,
+      ],
+      "userId": 1,
+    },
+    "type": "ADD_TODO_SUCCESS",
+  },
+]
+`;
+
+exports[`actionCreators creates EDIT_TODO_SUCCESS when editing todo has been successful 1`] = `
+Array [
+  Object {
+    "type": "EDIT_TODO_REQUEST",
+  },
+  Object {
+    "payload": Object {
+      "id": 1,
+      "name": "new name",
+    },
+    "type": "EDIT_TODO_SUCCESS",
+  },
+]
+`;
+
+exports[`actionCreators creates FETCH_TODOS_SUCCESS when fetching todos has been successful 1`] = `
+Array [
+  Object {
+    "type": "FETCH_TODOS_REQUEST",
+  },
+  Object {
+    "payload": Object {
+      "todos": Array [
+        Object {
+          "completed": false,
+          "description": "new todo",
+          "id": 1,
+        },
+      ],
+    },
+    "type": "FETCH_TODOS_SUCCESS",
+  },
+]
+`;
+
+exports[`actionCreators creates REMOVE_TODO_SUCCESS when removing todo has been successful 1`] = `
+Array [
+  Object {
+    "type": "REMOVE_TODO_REQUEST",
+  },
+  Object {
+    "payload": 1,
+    "type": "REMOVE_TODO_SUCCESS",
+  },
+]
+`;
+
+exports[`actionCreators creates TOGGLE_TODO_SUCCESS when removing todo has been successful 1`] = `
+Array [
+  Object {
+    "type": "TOGGLE_TODO_REQUEST",
+  },
+  Object {
+    "payload": 1,
+    "type": "TOGGLE_TODO_SUCCESS",
+  },
+]
+`;

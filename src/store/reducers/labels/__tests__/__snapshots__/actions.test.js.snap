@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`actionCreators creates FETCH_LABELS_SUCCESS when fetching labels has been done 1`] = `
+Array [
+  Object {
+    "type": "FETCH_LABELS_REQUEST",
+  },
+  Object {
+    "payload": Object {
+      "labels": Array [
+        Object {
+          "id": 1,
+          "value": "test",
+        },
+        Object {
+          "id": 2,
+          "value": "prod",
+        },
+      ],
+    },
+    "type": "FETCH_LABELS_SUCCESS",
+  },
+]
+`;

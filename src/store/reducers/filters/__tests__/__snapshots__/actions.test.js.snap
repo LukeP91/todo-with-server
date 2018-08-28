@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`actionCreators creates action to set filter 1`] = `
+Object {
+  "payload": "test",
+  "type": "SET_FILTER",
+}
+`;
+
+exports[`actionCreators creates action to set visiblity filter 1`] = `
+Object {
+  "payload": "ALL",
+  "type": "SET_VISIBILITY_FILTER",
+}
+`;

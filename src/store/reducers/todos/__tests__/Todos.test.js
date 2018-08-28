@@ -1,49 +1,104 @@
-import { todosReducer } from '../'
-import { types } from '../action_creators/todosActionCreators'
+import { todos } from '../'
+import { types } from '../types'
 
-describe('todosReducer', () => {
+describe('todos', () => {
   test('returns initial state', () => {
-    expect(todosReducer(undefined, {})).toEqual({
+    expect(todos(undefined, {})).toEqual({
       todos: [],
     })
   })
 
-  test('handle ADD', () => {
+  test('handle ADD_TODO_SUCCESS', () => {
     expect(
-      todosReducer(
+      todos(
         { todos: [] },
         {
           type: types.ADD_TODO_SUCCESS,
-          payload: { title: 'new_title', description: 'new todo', completed: false, id: 1 },
-        },
-      ),
-    ).toEqual({
-      todos: [{ title: 'new_title', description: 'new todo', completed: false, id: 1 }],
-    })
-
-    expect(
-      todosReducer(
-        {
-          todos: [{ title: 'old_title', description: 'old todo', completed: true, id: 1 }],
-        },
-        {
-          type: types.ADD_TODO_SUCCESS,
-          payload: { title: 'new_title', description: 'new todo', completed: false, id: 2 },
+          payload: {
+            title: 'new_title',
+            description: 'new todo',
+            completed: false,
+            id: 1,
+            userId: 1,
+            labelsIds: [1, 2],
+          },
         },
       ),
     ).toEqual({
       todos: [
-        { title: 'old_title', description: 'old todo', completed: true, id: 1 },
-        { title: 'new_title', description: 'new todo', completed: false, id: 2 },
+        {
+          title: 'new_title',
+          description: 'new todo',
+          completed: false,
+          id: 1,
+          userId: 1,
+          labelsIds: [1, 2],
+        },
+      ],
+    })
+
+    expect(
+      todos(
+        {
+          todos: [
+            {
+              title: 'old_title',
+              description: 'old todo',
+              completed: true,
+              id: 1,
+              userId: 2,
+              labelsIds: [],
+            },
+          ],
+        },
+        {
+          type: types.ADD_TODO_SUCCESS,
+          payload: {
+            title: 'new_title',
+            description: 'new todo',
+            completed: false,
+            id: 1,
+            userId: 1,
+            labelsIds: [1, 2],
+          },
+        },
+      ),
+    ).toEqual({
+      todos: [
+        {
+          title: 'old_title',
+          description: 'old todo',
+          completed: true,
+          id: 1,
+          userId: 2,
+          labelsIds: [],
+        },
+        {
+          title: 'new_title',
+          description: 'new todo',
+          completed: false,
+          id: 1,
+          userId: 1,
+          labelsIds: [1, 2],
+        },
       ],
     })
   })
 
-  test('handle REMOVE', () => {
+  test('handle REMOVE_TODO_SUCCESS', () => {
     expect(
-      todosReducer(
+      todos(
         {
-          todos: [{ title: 'new_title', description: 'todo', completed: true, id: 1 }],
+          todos: [
+            {
+              title: 'new_title',
+              description: 'new todo',
+              completed: false,
+              id: 1,
+              userId: 1,
+              labelsIds: [1, 2],
+            },
+          ],
         },
         {
           type: types.REMOVE_TODO_SUCCESS,
@@ -55,11 +110,20 @@ describe('todosReducer', () => {
     })
   })
 
-  test('handle TOGGLE', () => {
+  test('handle TOGGLE_TODO_SUCCESS', () => {
     expect(
-      todosReducer(
+      todos(
         {
-          todos: [{ title: 'new_title', description: 'todo', completed: true, id: 1 }],
+          todos: [
+            {
+              title: 'new_title',
+              description: 'new todo',
+              completed: false,
+              id: 1,
+              userId: 1,
+              labelsIds: [1, 2],
+            },
+          ],
         },
         {
           type: types.TOGGLE_TODO_SUCCESS,
@@ -67,14 +131,32 @@ describe('todosReducer', () => {
         },
       ),
     ).toEqual({
-      todos: [{ title: 'new_title', description: 'todo', completed: false, id: 1 }],
+      todos: [
+        {
+          title: 'new_title',
+          description: 'new todo',
+          completed: true,
+          id: 1,
+          userId: 1,
+          labelsIds: [1, 2],
+        },
+      ],
     })
   })
 
   expect(
-    todosReducer(
+    todos(
       {
-        todos: [{ title: 'new_title', description: 'todo', completed: false, id: 1 }],
+        todos: [
+          {
+            title: 'new_title',
+            description: 'new todo',
+            completed: true,
+            id: 1,
+            userId: 1,
+            labelsIds: [1, 2],
+          },
+        ],
       },
       {
         type: types.TOGGLE_TODO_SUCCESS,
@@ -82,6 +164,71 @@ describe('todosReducer', () => {
       },
     ),
   ).toEqual({
-    todos: [{ title: 'new_title', description: 'todo', completed: true, id: 1 }],
+    todos: [
+      {
+        title: 'new_title',
+        description: 'new todo',
+        completed: false,
+        id: 1,
+        userId: 1,
+        labelsIds: [1, 2],
+      },
+    ],
+  })
+
+  test('handle EDIT_TODO_SUCCESS', () => {
+    expect(
+      todos(
+        {
+          todos: [
+            {
+              title: 'old title',
+              description: 'old todo',
+              completed: true,
+              id: 1,
+              userId: 2,
+              labelsIds: [],
+            },
+            {
+              title: 'some title',
+              description: 'some todo',
+              completed: false,
+              id: 2,
+              userId: 1,
+              labelsIds: [1, 2],
+            },
+          ],
+        },
+        {
+          type: types.EDIT_TODO_SUCCESS,
+          payload: {
+            title: 'new title',
+            description: 'new todo',
+            id: 1,
+            userId: 3,
+            labelsIds: [3, 4],
+          },
+        },
+      ),
+    ).toEqual({
+      todos: [
+        {
+          title: 'new title',
+          description: 'new todo',
+          completed: true,
+          id: 1,
+          userId: 3,
+          labelsIds: [3, 4],
+        },
+        {
+          title: 'some title',
+          description: 'some todo',
+          completed: false,
+          id: 2,
+          userId: 1,
+          labelsIds: [1, 2],
+        },
+      ],
+    })
   })
 })
