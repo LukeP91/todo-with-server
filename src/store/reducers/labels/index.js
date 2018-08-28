@@ -4,7 +4,7 @@ const initialState = {
   labels: [],
 }
 
-export const labels = (state = initialState, action) => {
+export default (state = initialState, action) => {
   const { type, payload } = action
 
   switch (type) {

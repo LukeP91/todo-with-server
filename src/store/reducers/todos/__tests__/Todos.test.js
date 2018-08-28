@@ -1,30 +1,31 @@
-import { todos } from '../'
+import todos from '../'
 import { types } from '../types'
 
 describe('todos', () => {
   test('returns initial state', () => {
-    expect(todos(undefined, {})).toEqual({
+    const initialState = undefined
+    const action = {}
+
+    expect(todos(initialState, action)).toEqual({
       todos: [],
     })
   })
 
   test('handle ADD_TODO_SUCCESS', () => {
-    expect(
-      todos(
-        { todos: [] },
-        {
-          type: types.ADD_TODO_SUCCESS,
-          payload: {
-            title: 'new_title',
-            description: 'new todo',
-            completed: false,
-            id: 1,
-            userId: 1,
-            labelsIds: [1, 2],
-          },
-        },
-      ),
-    ).toEqual({
+    const initialState = { todos: [] }
+    const action = {
+      type: types.ADD_TODO_SUCCESS,
+      payload: {
+        title: 'new_title',
+        description: 'new todo',
+        completed: false,
+        id: 1,
+        userId: 1,
+        labelsIds: [1, 2],
+      },
+    }
+
+    expect(todos(initialState, action)).toEqual({
       todos: [
         {
           title: 'new_title',
@@ -36,34 +37,34 @@ describe('todos', () => {
         },
       ],
     })
+  })
 
-    expect(
-      todos(
+  test('handle ADD_TODO_SUCCESS with non-empty inital state', () => {
+    const initialState = {
+      todos: [
         {
-          todos: [
-            {
-              title: 'old_title',
-              description: 'old todo',
-              completed: true,
-              id: 1,
-              userId: 2,
-              labelsIds: [],
-            },
-          ],
+          title: 'old_title',
+          description: 'old todo',
+          completed: true,
+          id: 1,
+          userId: 2,
+          labelsIds: [],
         },
-        {
-          type: types.ADD_TODO_SUCCESS,
-          payload: {
-            title: 'new_title',
-            description: 'new todo',
-            completed: false,
-            id: 1,
-            userId: 1,
-            labelsIds: [1, 2],
-          },
-        },
-      ),
-    ).toEqual({
+      ],
+    }
+    const action = {
+      type: types.ADD_TODO_SUCCESS,
+      payload: {
+        title: 'new_title',
+        description: 'new todo',
+        completed: false,
+        id: 1,
+        userId: 1,
+        labelsIds: [1, 2],
+      },
+    }
+
+    expect(todos(initialState, action)).toEqual({
       todos: [
         {
           title: 'old_title',
@@ -86,51 +87,47 @@ describe('todos', () => {
   })
 
   test('handle REMOVE_TODO_SUCCESS', () => {
-    expect(
-      todos(
+    const initialState = {
+      todos: [
         {
-          todos: [
-            {
-              title: 'new_title',
-              description: 'new todo',
-              completed: false,
-              id: 1,
-              userId: 1,
-              labelsIds: [1, 2],
-            },
-          ],
+          title: 'new_title',
+          description: 'new todo',
+          completed: false,
+          id: 1,
+          userId: 1,
+          labelsIds: [1, 2],
         },
-        {
-          type: types.REMOVE_TODO_SUCCESS,
-          payload: 1,
-        },
-      ),
-    ).toEqual({
+      ],
+    }
+    const action = {
+      type: types.REMOVE_TODO_SUCCESS,
+      payload: 1,
+    }
+
+    expect(todos(initialState, action)).toEqual({
       todos: [],
     })
   })
 
-  test('handle TOGGLE_TODO_SUCCESS', () => {
-    expect(
-      todos(
+  test('handle TOGGLE_TODO_SUCCESS for not completed todo', () => {
+    const initialState = {
+      todos: [
         {
-          todos: [
-            {
-              title: 'new_title',
-              description: 'new todo',
-              completed: false,
-              id: 1,
-              userId: 1,
-              labelsIds: [1, 2],
-            },
-          ],
+          title: 'new_title',
+          description: 'new todo',
+          completed: false,
+          id: 1,
+          userId: 1,
+          labelsIds: [1, 2],
         },
-        {
-          type: types.TOGGLE_TODO_SUCCESS,
-          payload: 1,
-        },
-      ),
-    ).toEqual({
+      ],
+    }
+    const action = {
+      type: types.TOGGLE_TODO_SUCCESS,
+      payload: 1,
+    }
+
+    expect(todos(initialState, action)).toEqual({
       todos: [
         {
           title: 'new_title',
@@ -144,73 +141,71 @@ describe('todos', () => {
     })
   })
 
-  expect(
-    todos(
-      {
-        todos: [
-          {
-            title: 'new_title',
-            description: 'new todo',
-            completed: true,
-            id: 1,
-            userId: 1,
-            labelsIds: [1, 2],
-          },
-        ],
-      },
-      {
-        type: types.TOGGLE_TODO_SUCCESS,
-        payload: 1,
-      },
-    ),
-  ).toEqual({
-    todos: [
-      {
-        title: 'new_title',
-        description: 'new todo',
-        completed: false,
-        id: 1,
-        userId: 1,
-        labelsIds: [1, 2],
-      },
-    ],
+  test('handle TOGGLE_TODO_SUCCESS for completed todo', () => {
+    const initialState = {
+      todos: [
+        {
+          title: 'new_title',
+          description: 'new todo',
+          completed: true,
+          id: 1,
+          userId: 1,
+          labelsIds: [1, 2],
+        },
+      ],
+    }
+    const action = {
+      type: types.TOGGLE_TODO_SUCCESS,
+      payload: 1,
+    }
+
+    expect(todos(initialState, action)).toEqual({
+      todos: [
+        {
+          title: 'new_title',
+          description: 'new todo',
+          completed: false,
+          id: 1,
+          userId: 1,
+          labelsIds: [1, 2],
+        },
+      ],
+    })
   })
 
   test('handle EDIT_TODO_SUCCESS', () => {
-    expect(
-      todos(
+    const initialState = {
+      todos: [
         {
-          todos: [
-            {
-              title: 'old title',
-              description: 'old todo',
-              completed: true,
-              id: 1,
-              userId: 2,
-              labelsIds: [],
-            },
-            {
-              title: 'some title',
-              description: 'some todo',
-              completed: false,
-              id: 2,
-              userId: 1,
-              labelsIds: [1, 2],
-            },
-          ],
+          title: 'old title',
+          description: 'old todo',
+          completed: true,
+          id: 1,
+          userId: 2,
+          labelsIds: [],
         },
         {
-          type: types.EDIT_TODO_SUCCESS,
-          payload: {
-            title: 'new title',
-            description: 'new todo',
-            id: 1,
-            userId: 3,
-            labelsIds: [3, 4],
-          },
+          title: 'some title',
+          description: 'some todo',
+          completed: false,
+          id: 2,
+          userId: 1,
+          labelsIds: [1, 2],
         },
-      ),
-    ).toEqual({
+      ],
+    }
+    const action = {
+      type: types.EDIT_TODO_SUCCESS,
+      payload: {
+        title: 'new title',
+        description: 'new todo',
+        id: 1,
+        userId: 3,
+        labelsIds: [3, 4],
+      },
+    }
+
+    expect(todos(initialState, action)).toEqual({
       todos: [
         {
           title: 'new title',

@@ -1,9 +1,12 @@
-import { labels } from '../'
+import labels from '../'
 import { types } from '../types'
 
 describe('todos', () => {
   test('returns initial state', () => {
-    expect(labels(undefined, {})).toEqual({
+    const initialState = undefined
+    const action = {}
+
+    expect(labels(initialState, action)).toEqual({
       labels: [],
     })
   })

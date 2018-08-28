@@ -4,7 +4,7 @@ const initialState = {
   todos: [],
 }
 
-export const todos = (state = initialState, action) => {
+export default (state = initialState, action) => {
   const { todos } = state
   const { type, payload } = action
 

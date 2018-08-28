@@ -1,32 +1,29 @@
-import { filters } from '../'
+import filters from '../'
 import { types } from '../types'
 
 describe('todos', () => {
   test('returns initial state', () => {
-    expect(filters(undefined, {})).toEqual({ query: '', visiblityFilter: 'All' })
+    const initialState = undefined
+    const action = {}
+
+    expect(filters(initialState, action)).toEqual({ query: '', visiblityFilter: 'All' })
   })
 
   test('handle SET_FILTER', () => {
-    expect(
-      filters(
-        { query: '', visiblityFilter: 'All' },
-        {
-          type: types.SET_FILTER,
-          payload: 'test',
-        },
-      ),
-    ).toEqual({ query: 'test', visiblityFilter: 'All' })
+    const initialState = { query: '', visiblityFilter: 'All' }
+    const action = {
+      type: types.SET_FILTER,
+      payload: 'test',
+    }
+    expect(filters(initialState, action)).toEqual({ query: 'test', visiblityFilter: 'All' })
   })
 
   test('handle SET_VISIBILITY_FILTER', () => {
-    expect(
-      filters(
-        { query: '', visiblityFilter: 'All' },
-        {
-          type: types.SET_VISIBILITY_FILTER,
-          payload: 'Completed',
-        },
-      ),
-    ).toEqual({ query: '', visiblityFilter: 'Completed' })
+    const initialState = { query: '', visiblityFilter: 'All' }
+    const action = {
+      type: types.SET_VISIBILITY_FILTER,
+      payload: 'Completed',
+    }
+    expect(filters(initialState, action)).toEqual({ query: '', visiblityFilter: 'Completed' })
   })
 })
