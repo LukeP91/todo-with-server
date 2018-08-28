@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
+import { Link } from 'react-router-dom'
 
 const styles = {
   root: {
@@ -13,6 +14,10 @@ const styles = {
   flex: {
     flexGrow: 1,
   },
+  link: {
+    color: 'white',
+    textDecoration: 'none',
+  }
 }
 
 class Title extends Component {
@@ -23,7 +28,9 @@ class Title extends Component {
         <AppBar position="static">
           <Toolbar>
             <Typography className={classes.flex} color="inherit" variant="title">
-              Todos
+              <Link className={classes.link} to={'/'}>
+                Todos
+              </Link>
             </Typography>
           </Toolbar>
         </AppBar>
