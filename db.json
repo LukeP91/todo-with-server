@@ -32,16 +32,6 @@
   ],
   "todos": [
     {
-      "id": 1,
-      "title": "Create db for JSON",
-      "description": "Create db for json server so uber React app has some backend to connected to",
-      "completed": false,
-      "userId": 2,
-      "labelsIds": [
-        3
-      ]
-    },
-    {
       "id": 2,
       "title": "Create local store version of the app",
       "description": "Create local store version of the app as first milestone",
@@ -59,6 +49,303 @@
         2,
         1
       ]
+    },
+    {
+      "title": "Test title",
+      "description": "Some new description",
+      "userId": 1,
+      "labelsIds": [
+        1
+      ],
+      "id": 4
+    },
+    {
+      "title": "Test title",
+      "description": "Some new description",
+      "userId": 1,
+      "labelsIds": [
+        1
+      ],
+      "id": 5
+    },
+    {
+      "title": "Test title",
+      "description": "Some new description",
+      "userId": 1,
+      "labelsIds": [
+        1
+      ],
+      "id": 6
+    },
+    {
+      "title": "Test title",
+      "description": "Some new description",
+      "userId": 1,
+      "labelsIds": [
+        1
+      ],
+      "id": 7
+    },
+    {
+      "title": "Test title",
+      "description": "Some new description",
+      "userId": 1,
+      "labelsIds": [
+        1
+      ],
+      "id": 8
+    },
+    {
+      "title": "Test title",
+      "description": "Some new description",
+      "userId": 1,
+      "labelsIds": [
+        1
+      ],
+      "id": 9
+    },
+    {
+      "title": "Test title",
+      "description": "Some new description",
+      "userId": 1,
+      "labelsIds": [
+        1
+      ],
+      "id": 10
+    },
+    {
+      "title": "Test title",
+      "description": "Some new description",
+      "userId": 1,
+      "labelsIds": [
+        1
+      ],
+      "id": 11
+    },
+    {
+      "title": "Test title",
+      "description": "Some new description",
+      "userId": 1,
+      "labelsIds": [
+        1
+      ],
+      "id": 12
+    },
+    {
+      "title": "Test title",
+      "description": "Some new description",
+      "userId": 1,
+      "labelsIds": [
+        1
+      ],
+      "id": 13
+    },
+    {
+      "title": "Test title",
+      "description": "Some new description",
+      "userId": 1,
+      "labelsIds": [
+        1
+      ],
+      "id": 14
+    },
+    {
+      "title": "Test title",
+      "description": "Some new description",
+      "userId": 1,
+      "labelsIds": [
+        1
+      ],
+      "id": 15
+    },
+    {
+      "title": "Test title",
+      "description": "Some new description",
+      "userId": 1,
+      "labelsIds": [
+        1
+      ],
+      "id": 16
+    },
+    {
+      "title": "Test title",
+      "description": "Some new description",
+      "userId": 1,
+      "labelsIds": [
+        1
+      ],
+      "id": 17
+    },
+    {
+      "title": "Test title",
+      "description": "Some new description",
+      "userId": 1,
+      "labelsIds": [
+        1
+      ],
+      "id": 18
+    },
+    {
+      "title": "Test title",
+      "description": "Some new description",
+      "userId": 1,
+      "labelsIds": [
+        1
+      ],
+      "id": 19
+    },
+    {
+      "title": "Test title",
+      "description": "Some new description",
+      "userId": 1,
+      "labelsIds": [
+        1
+      ],
+      "id": 20
+    },
+    {
+      "title": "Test title",
+      "description": "Some new description",
+      "userId": 1,
+      "labelsIds": [
+        1
+      ],
+      "id": 21
+    },
+    {
+      "title": "Test title",
+      "description": "Some new description",
+      "userId": 1,
+      "labelsIds": [
+        1
+      ],
+      "id": 22
+    },
+    {
+      "title": "Test title",
+      "description": "Some new description",
+      "userId": 1,
+      "labelsIds": [
+        1
+      ],
+      "id": 23
+    },
+    {
+      "title": "Test title",
+      "description": "Some new description",
+      "userId": 1,
+      "labelsIds": [
+        1
+      ],
+      "id": 24
+    },
+    {
+      "title": "Test title",
+      "description": "Some new description",
+      "userId": 1,
+      "labelsIds": [
+        1
+      ],
+      "id": 25
+    },
+    {
+      "title": "Test title",
+      "description": "Some new description",
+      "userId": 1,
+      "labelsIds": [
+        1
+      ],
+      "id": 26
+    },
+    {
+      "title": "Test title",
+      "description": "Some new description",
+      "userId": 1,
+      "labelsIds": [
+        1
+      ],
+      "id": 27
+    },
+    {
+      "title": "Test title",
+      "description": "Some new description",
+      "userId": 1,
+      "labelsIds": [
+        1
+      ],
+      "id": 28
+    },
+    {
+      "title": "Test title",
+      "description": "Some new description",
+      "userId": 1,
+      "labelsIds": [
+        1
+      ],
+      "id": 29
+    },
+    {
+      "title": "Test title",
+      "description": "Some new description",
+      "userId": 1,
+      "labelsIds": [
+        1
+      ],
+      "id": 30
+    },
+    {
+      "title": "Test title",
+      "description": "Some new description",
+      "userId": 1,
+      "labelsIds": [
+        1
+      ],
+      "id": 31
+    },
+    {
+      "title": "Test title",
+      "description": "Some new description",
+      "userId": 1,
+      "labelsIds": [
+        1
+      ],
+      "id": 32
+    },
+    {
+      "title": "Test title",
+      "description": "Some new description",
+      "userId": 1,
+      "labelsIds": [
+        1
+      ],
+      "id": 33
+    },
+    {
+      "title": "Test title",
+      "description": "Some new description",
+      "userId": 1,
+      "labelsIds": [
+        1
+      ],
+      "id": 34
+    },
+    {
+      "title": "Test title",
+      "description": "Some new description",
+      "userId": 1,
+      "labelsIds": [
+        1
+      ],
+      "id": 35
+    },
+    {
+      "title": "Test title",
+      "description": "Some new description",
+      "userId": 1,
+      "labelsIds": [
+        1
+      ],
+      "id": 36
     }
   ]
 }

@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TextInput renders correctly 1`] = `
+<div
+  className="MuiFormControl-root-2 TextInput-container-1"
+>
+  <label
+    className="MuiFormLabel-root-11 MuiInputLabel-root-6 MuiInputLabel-formControl-7 MuiInputLabel-animated-10"
+    data-shrink={false}
+    htmlFor="name-simple"
+  >
+    test
+  </label>
+  <div
+    className="MuiInput-root-18 MuiInput-formControl-19 MuiInput-underline-22"
+  >
+    <input
+      aria-invalid={false}
+      className="MuiInput-input-26"
+      disabled={false}
+      id="name-simple"
+      name="test"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      required={false}
+      type="text"
+      value=""
+    />
+  </div>
+</div>
+`;
+
+exports[`TextInput when errors are passed renders TextInput with errors 1`] = `
+<div
+  className="MuiFormControl-root-2 TextInput-container-1"
+>
+  <label
+    className="MuiFormLabel-root-11 MuiInputLabel-root-6 MuiInputLabel-formControl-7 MuiInputLabel-animated-10"
+    data-shrink={false}
+    htmlFor="name-simple"
+  >
+    test
+  </label>
+  <div
+    className="MuiInput-root-18 MuiInput-formControl-19 MuiInput-underline-22"
+  >
+    <input
+      aria-invalid={false}
+      className="MuiInput-input-26"
+      disabled={false}
+      id="name-simple"
+      name="test"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      required={false}
+      type="text"
+      value=""
+    />
+  </div>
+</div>
+`;

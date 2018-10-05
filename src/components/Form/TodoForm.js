@@ -22,7 +22,7 @@ const TodoForm = ({ classes, labels, users }) => (
     <Field component={TextInput} label="Description" name="description" />
     <Field component={UserSelect} label="User" name="userId" users={users} />
     <Field component={LabelSelect} label="Labels" labels={labels} name="labelsIds" />
-    <Button color="primary" type="submit" variant="contained">
+    <Button color="primary" id="submit-button" type="submit" variant="contained">
       Submit
     </Button>
   </Form>

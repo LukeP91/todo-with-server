@@ -6,6 +6,8 @@ import PropTypes from 'prop-types'
 import React from 'react'
 
 import { addTodo } from '../../store/reducers/todos/actions'
+import { fetchLabels } from '../../store/reducers/labels/actions'
+import { fetchUsers } from '../../store/reducers/users/actions'
 import Form from './FormComponent'
 
 const styles = theme => ({
@@ -30,9 +32,14 @@ const styles = theme => ({
   },
 })
 
-class SimpleModal extends React.Component {
+export class SimpleModal extends React.Component {
   state = {
     open: false,
+  }
+
+  componentDidMount() {
+    this.props.fetchUsers('http://localhost:3001/users', { method: 'GET' })
+    this.props.fetchLabels('http://localhost:3001/labels', { method: 'GET' })
   }
 
   handleOpen = () => {
@@ -50,13 +57,24 @@ class SimpleModal extends React.Component {
   }
 
   render() {
-    const { classes, color, buttonLabel, variant, fab, initialValues } = this.props
+    const {
+      classes,
+      color,
+      buttonLabel,
+      variant,
+      fab,
+      initialValues,
+      users,
+      labels,
+      id,
+    } = this.props
 
     return (
       <div className={classes.container}>
         <Button
           className={fab ? classes.fab : classes.button}
           color={color}
+          id={id}
           onClick={this.handleOpen}
           variant={variant}
         >
@@ -67,7 +85,9 @@ class SimpleModal extends React.Component {
             <Form
               handleClose={this.handleClose}
               initialValues={initialValues}
+              labels={labels}
               submit={this.submit}
+              users={users}
             />
           </div>
         </Modal>
@@ -76,8 +96,15 @@ class SimpleModal extends React.Component {
   }
 }
 
+const mapStateToProps = state => ({
+  labels: state.labels.labels,
+  users: state.users.users,
+})
+
 const mapDispatchToProps = {
   addTodo,
+  fetchLabels,
+  fetchUsers,
 }
 
 SimpleModal.propTypes = {
@@ -85,14 +112,19 @@ SimpleModal.propTypes = {
   classes: PropTypes.object.isRequired,
   color: PropTypes.string,
   fab: PropTypes.bool,
+  fetchLabels: PropTypes.func,
+  fetchUsers: PropTypes.func,
+  id: PropTypes.number,
   initialValues: PropTypes.object.isRequired,
+  labels: PropTypes.array,
   submit: PropTypes.func,
+  users: PropTypes.array,
   variant: PropTypes.string,
 }
 
 export default withStyles(styles)(
   connect(
-    null,
+    mapStateToProps,
     mapDispatchToProps,
   )(SimpleModal),
 )

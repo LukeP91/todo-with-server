@@ -135,7 +135,7 @@ describe('filterTodos', () => {
         id: 1,
         userId: 2,
         labelsIds: [],
-      }
+      },
     ])
   })
 })

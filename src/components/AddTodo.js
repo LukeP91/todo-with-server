@@ -26,6 +26,7 @@ class AddTodo extends React.Component {
         buttonLabel={<AddIcon />}
         color="primary"
         fab
+        id="add-button"
         initialValues={{ title: '', description: '', userId: '', labelsIds: [] }}
         submit={this.submit}
         variant="fab"

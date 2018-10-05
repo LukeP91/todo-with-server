@@ -82,7 +82,7 @@ class TodoDetails extends Component {
           }}
           variant="default"
         />
-        <Button color="secondary" onClick={() => deleteTodo(todo.id)}>
+        <Button color="secondary" id="delete-button" onClick={() => deleteTodo(todo.id)}>
           Delete
         </Button>
       </Paper>

@@ -63,7 +63,7 @@ class TodoList extends Component {
           type="search"
           value={this.state.name}
         />
-        <List>{todos.map((todo, i) => <Link key={i} todo={todo} />)}</List>
+        <List id="todos-list">{todos.map((todo, i) => <Link key={i} todo={todo} />)}</List>
         <VisibilityFilter />
       </Paper>
     )

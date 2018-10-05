@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LabelSelect renders correctly 1`] = `
+<div
+  className="MultipleSelect-root-1"
+>
+  <div
+    className="MuiFormControl-root-5 MultipleSelect-formControl-2"
+  >
+    <label
+      className="MuiFormLabel-root-14 MuiFormLabel-filled-18 MuiInputLabel-root-9 MuiInputLabel-formControl-10 MuiInputLabel-animated-13 MuiInputLabel-shrink-12"
+      data-shrink={true}
+      htmlFor="select-multiple-chip"
+    >
+      Labels
+    </label>
+    <div
+      className="MuiInput-root-26 MuiInput-formControl-27 MuiInput-underline-30"
+    >
+      <div
+        className="MuiSelect-root-21"
+      >
+        <div
+          aria-haspopup="true"
+          aria-owns={null}
+          aria-pressed="false"
+          className="MuiSelect-select-22 MuiSelect-selectMenu-23 MuiInput-input-34"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          role="button"
+          tabIndex={0}
+        >
+          <div
+            className="MultipleSelect-chips-3"
+          >
+            <div
+              className="MuiChip-root-39 MultipleSelect-chip-4"
+              onKeyDown={[Function]}
+              role="button"
+              tabIndex={-1}
+            >
+              <span
+                className="MuiChip-label-52"
+              >
+                Label1
+              </span>
+            </div>
+          </div>
+        </div>
+        <input
+          id="test"
+          name="test"
+          type="hidden"
+          value="1"
+        />
+        <svg
+          aria-hidden="true"
+          className="MuiSvgIcon-root-56 MuiSelect-icon-25"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M7 10l5 5 5-5z"
+          />
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>
+`;

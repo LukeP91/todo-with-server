@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TodoContainer renders correctly and fetches users and labels on mount 1`] = `
+<div
+  className="MuiPaper-root-1 MuiPaper-elevation2-5 MuiPaper-rounded-2"
+>
+  <h1
+    className="MuiTypography-root-28 MuiTypography-display1-32 MuiTypography-gutterBottom-45 MuiTypography-alignLeft-40"
+  >
+    Loading...
+  </h1>
+</div>
+`;

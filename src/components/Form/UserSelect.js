@@ -22,9 +22,9 @@ class TextInput extends Component {
     } = props
 
     return (
-      <FormControl className={classes.container}>
+      <FormControl className={classes.container} id="users-list">
         <InputLabel htmlFor="name-simple">{label}</InputLabel>
-        <Select id="name-error" {...field} name={name}>
+        <Select {...field} id="user-select" name={name}>
           {users.map(user => (
             <MenuItem key={user.id} value={user.id}>
               {user.name}

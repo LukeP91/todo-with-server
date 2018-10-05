@@ -1,0 +1,129 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UserSelect renders correctly 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <WithStyles(TextInput)
+    field={
+      Object {
+        "name": "test",
+        "value": Array [
+          1,
+        ],
+      }
+    }
+    form={
+      Object {
+        "values": Object {
+          "labelsIds": Array [
+            1,
+          ],
+        },
+      }
+    }
+    users={
+      Array [
+        Object {
+          "email": "test@example.com",
+          "id": 1,
+          "name": "Test user",
+        },
+      ]
+    }
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "classes": Object {
+        "container": "TextInput-container-1",
+      },
+      "field": Object {
+        "name": "test",
+        "value": Array [
+          1,
+        ],
+      },
+      "form": Object {
+        "values": Object {
+          "labelsIds": Array [
+            1,
+          ],
+        },
+      },
+      "users": Array [
+        Object {
+          "email": "test@example.com",
+          "id": 1,
+          "name": "Test user",
+        },
+      ],
+    },
+    "ref": null,
+    "rendered": null,
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "classes": Object {
+          "container": "TextInput-container-1",
+        },
+        "field": Object {
+          "name": "test",
+          "value": Array [
+            1,
+          ],
+        },
+        "form": Object {
+          "values": Object {
+            "labelsIds": Array [
+              1,
+            ],
+          },
+        },
+        "users": Array [
+          Object {
+            "email": "test@example.com",
+            "id": 1,
+            "name": "Test user",
+          },
+        ],
+      },
+      "ref": null,
+      "rendered": null,
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+    "attachTo": undefined,
+    "hydrateIn": undefined,
+  },
+}
+`;

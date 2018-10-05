@@ -20,7 +20,7 @@ const styles = theme => ({
   },
 })
 
-class TodoContainer extends Component {
+export class TodoContainer extends Component {
   componentDidMount() {
     this.props.fetchUsers('http://localhost:3001/users', { method: 'GET' })
     this.props.fetchLabels('http://localhost:3001/labels', { method: 'GET' })

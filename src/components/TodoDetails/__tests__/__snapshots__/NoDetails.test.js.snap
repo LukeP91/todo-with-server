@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NoDetails renders correctly 1`] = `
+<div
+  className="MuiPaper-root-2 MuiPaper-elevation2-6 MuiPaper-rounded-3 NoDetails-paper-1"
+>
+  <p
+    className="MuiTypography-root-29 MuiTypography-body1-38 MuiTypography-gutterBottom-46 MuiTypography-alignLeft-41"
+  >
+    Select todo from the list on the right to see details.
+  </p>
+</div>
+`;

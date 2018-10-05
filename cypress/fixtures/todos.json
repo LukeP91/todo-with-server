@@ -1,0 +1,12 @@
+[
+  {
+    "id": 1,
+    "title": "Test todo",
+    "description": "Some new description",
+    "completed": false,
+    "userId": 1,
+    "labelsIds": [
+      1
+    ]
+  }
+]
